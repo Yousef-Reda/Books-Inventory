@@ -1,0 +1,52 @@
+﻿@model book_inven.Models.Member
+
+@{
+    ViewData["Title"] = "Member Details";
+}
+
+<h1>Member Details</h1>
+
+<div>
+
+    <p><strong>Member ID:</strong> @Model.Mid</p>
+    <p><strong>Name:</strong> @Model.Mname</p>
+    <p><strong>Address:</strong> @Model.Maddress</p>
+    <p><strong>Phone:</strong> @Model.Mphone</p>
+</div>
+
+<h3>Member Actions</h3>
+@if (Model.Memberactions != null && Model.Memberactions.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Borrow Date</th>
+                <th>Return Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var action in Model.Memberactions)
+            {
+                <tr>
+                    <td>@action.BidNavigation.Btitle</td>
+                    <td>@action.BorrowDate.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        @if (action.ReturnDate.HasValue)
+                        {
+                            @action.ReturnDate.Value.ToString("yyyy-MM-dd")
+                        }
+                        else
+                        {
+                            <span>Not Returned Yet</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No actions found for this member.</p>
+}

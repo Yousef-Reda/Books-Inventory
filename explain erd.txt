@@ -1,0 +1,11 @@
+- each book can be borrowed multiple times 
+- each member can borrow one book 
+
+
+mem-->actions partial : علشان مش لازم كل ميمبر يستعير كتاب
+
+actions-->mem total : علشان لو حصل اكشن لازم يكون الل عامله ميمبر
+
+book --> actions partial : علشان مش لازم كل كتاب موجود يتم استعارته ممكن فيه كتب محصلهاش استعارة 
+
+actions --> book total : عشان اي اكشن يحصل فيه استعارة لازم يكون فيه كتاب بتستعيره 

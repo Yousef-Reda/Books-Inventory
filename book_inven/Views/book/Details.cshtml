@@ -1,0 +1,28 @@
+﻿@model book_inven.Models.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h1>Book Details</h1>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Book ID</dt>
+        <dd class="col-sm-10">@Model.Bid</dd>
+
+        <dt class="col-sm-2">Book Title</dt>
+        <dd class="col-sm-10">@Model.Btitle</dd>
+
+        <dt class="col-sm-2">Book Price</dt>
+        <dd class="col-sm-10">@Model.Bprice</dd>
+
+        <dt class="col-sm-2">Book Type</dt>
+        <dd class="col-sm-10">@Model.Btype</dd>
+    </dl>
+</div>
+<div>
+    <a href="@Url.Action("Index", "Book")" class="btn btn-secondary">Back to List</a>
+</div>

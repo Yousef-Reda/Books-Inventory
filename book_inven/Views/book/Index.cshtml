@@ -1,0 +1,52 @@
+﻿@model ICollection<book_inven.Models.Book>
+
+@{
+    ViewData["Title"] = "Books List";
+}
+
+<h1>Books List</h1>
+
+<p>
+    <a href="@Url.Action("Create", "Book")" class="btn btn-primary">Create New Book</a>
+</p>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Book Price</th>
+                <th>Book Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+                <tr>
+                    <td>@book.Btitle</td>
+                    <td>@book.Bprice</td>
+                    <td>@book.Btype</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Book", new { id = book.Bid })" class="btn btn-info btn-sm">Details</a>
+
+
+                        <a asp-action="Edit" asp-controller="Book" asp-route-id="@book.Bid" class="btn btn-warning btn-sm">Edit</a>
+
+                        <form method="post" asp-action="Delete" asp-controller="Book" style="display:inline;">
+                            <input type="hidden" name="id" value="@book.Bid" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+
+
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

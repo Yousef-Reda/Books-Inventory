@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    body {
+        background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080') no-repeat center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        color:black ; /* Changed text color */
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 3em;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        color: white; /* Changed text color */
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.5em;
+        color: black; /* Changed text color */
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .btn {
+        font-size: 1.2em;
+        padding: 10px 20px;
+        margin: 0 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+        }
+
+    .btn-secondary {
+        background-color: #2ecc71;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #27ae60;
+            transform: scale(1.1);
+        }
+
+    .btn img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+</style>
+
+<h1>Welcome to the Library Management System</h1>
+
+<p>Choose an option to get started:</p>
+
+<div class="btn-group">
+    <a href="@Url.Action("Index", "book")" class="btn btn-primary">
+        <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Books Icon"> View Books
+    </a>
+    <a href="@Url.Action("Index", "member")" class="btn btn-secondary">
+        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Members Icon"> View Members
+    </a>
+</div>

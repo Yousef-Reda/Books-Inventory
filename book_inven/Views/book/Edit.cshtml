@@ -1,0 +1,32 @@
+﻿@model book_inven.Models.Book
+
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<h1>Edit Book</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Bid" />
+
+    <div class="form-group">
+        <label asp-for="Btitle" class="control-label"></label>
+        <input asp-for="Btitle" class="form-control" />
+        <span asp-validation-for="Btitle" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Bprice" class="control-label"></label>
+        <input asp-for="Bprice" class="form-control" />
+        <span asp-validation-for="Bprice" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Btype" class="control-label"></label>
+        <input asp-for="Btype" class="form-control" />
+        <span asp-validation-for="Btype" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,66 @@
+﻿@model ICollection<book_inven.Models.Member>
+
+<h1>Members List</h1>
+
+<p>
+    <a href="@Url.Action("Create", "member")" class="btn btn-primary">Create New Member</a>
+</p>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Member Name</th>
+                <th>Member Address</th>
+                <th>Member Phone</th>
+                <th>Actions</th>
+                <th>Fine Status</th> 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model)
+            {
+                <tr>
+                    <td>@member.Mname</td>
+                    <td>@member.Maddress</td>
+                    <td>@member.Mphone</td>
+
+                    <td>
+                        <form method="post" asp-action="Delete" asp-controller="Member" style="display:inline;">
+                            <input type="hidden" name="id" value="@member.Mid" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                   
+                             <a asp-action="Edit" asp-route-id="@member.Mid" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="Details" asp-route-id="@member.Mid" class="btn btn-info btn-sm">Details</a>
+                  
+                        </form>
+
+                    </td>
+
+                    <td>
+                        <button class="btn btn-info btn-sm" onclick="checkFine(@member.Mid)">Check Fine</button>
+                        <span id="fine-@member.Mid"></span> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<script>
+    function checkFine(memberId) {
+        $.get('/Member/GetFineStatus', { memberId: memberId }, function (response) {
+            
+            if (response.hasFine) {
+                $('#fine-' + memberId).text('Fine: ' + response.fineAmount + ' EGP');
+            } else {
+                $('#fine-' + memberId).text('No fine');
+            }
+        });
+    }
+</script>
